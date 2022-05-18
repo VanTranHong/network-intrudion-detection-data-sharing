@@ -1,0 +1,89 @@
+\documentclass[10pt,sigconf,letterpaper,anonymous]{acmart}
+
+\usepackage[english]{babel}
+\usepackage{balance}
+  % for creating a balanced last page (usually last page with references)
+
+\usepackage{booktabs} % For formal tables
+\usepackage{pifont}
+\usepackage{color}
+\usepackage{adjustbox}
+% \usepackage[dvipsnames]{xcolor}
+\usepackage{microtype} % must be loaded after all fonts
+% \usepackage{url}
+\usepackage{makecell}
+\usepackage{graphicx, subfigure}
+% \usepackage{subcaption}
+\usepackage{amsmath}
+
+\usepackage[shortlabels]{enumitem}
+
+\usepackage{multirow}
+\usepackage{booktabs}
+% Used in Appendix tables
+\usepackage{makecell}
+\renewcommand\cellalign{cl}
+\renewcommand\cellgape{\Gape[1pt]}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+\pagestyle{plain} % removes running headers
+\settopmatter{printacmref=false}
+\setcopyright{none}
+
+
+% %Conference Info
+% \acmYear{2018}
+% \copyrightyear{2018}
+% \setcopyright{acmcopyright}
+% \acmConference{CoNEXT '18}{December 4--7, 2018}{Heraklion/Crete, Greece}
+% \acmPrice{TBA}
+% \acmDOI{TBA}
+% \acmISBN{TBA}
+
+\providecommand{\myparab}[1]{\smallskip\noindent\textbf{#1} }
+\newcommand{\sectionref}[1]{$\S$\ref{#1}}
+\newcommand{\phong}[1]{\ding{110}\ding{43}\textcolor{blue}{NP: #1}}
+\newcommand{\arjun}[1]{\textcolor{green}{ANB: #1}}
+\newcommand{\todo}[1]{\textcolor{red}{To-do: #1}}
+\newcommand{\chase}[1]{\textcolor{purple}{CJ: #1}}
+\newcommand{\eg}{\textit{e.g.}}
+
+\pagestyle{plain}  % no headers, footers, etc and insert page count
+\begin{document}
+\title{On the Feasibility of Data Sharing for Network Intrusion Detection}
+
+\subtitle{Paper \# 84, XXX pages}
+% \author{Firstname Lastname}
+% \authornote{Note}
+% \orcid{1234-5678-9012}
+% \affiliation{%
+%   \institution{Affiliation}
+%   \streetaddress{Address}
+%   \city{City} 
+%   \state{State} 
+%   \postcode{Zipcode}
+% }
+% \email{email@domain.com}
+
+
+\input{abstract}
+
+\maketitle
+
+\input{intro}
+\input{background}
+\input{method}
+\input{results}
+\input{discussion}
+\input{conclusion}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{reference}
+
+\appendix
+
+\input{appendix}
+
+\end{document}
