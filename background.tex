@@ -1,3 +1,29 @@
 \section{Background}
 \label{sec:background}
+\begin{background}
+Here, we first review DDoS attacks, followed by different NIDS techniques that are currently used to detect DDoS. We will then talk about the idea of data sharing and its use in other domains. Finally we will talk about the Machine Learning techniques that we will use as the NIDS technique in this study.
+\subsection{DDoS attacks}
+DDoS attacks are carried out with different incentives. They can be for financial\/economic gains, revenge, ideological belief, intellectual Challenge or cyberwarfare. Amongst these incentives, attacks for financial/economic gain are usually the most technical carried out by the most experienced attackers and therefore, are the most dangerous and hard to stop.\\
+Techniques wise, DDoS can be categorized into three types:
+\begin{enumerate}
+    \item Volume Based Attacks. This includes UDP floods, ICMP floods and other spoofed packet floods. The attacker's goal is to exhaust the bandwidth of the attacked site.
+    \item Protocol Attacks. Include SYN floods, fragmented packet attacks, Ping of Death, Smurf DDoS and more. This type of attack exploit the protocol that the server and client use to communicate with the clients to consume the resources of the servers, or those of intermediate communication equipment, such as firewalls, load balancers and so on.
+    \item Application Layer Attacks. This includes low and slow attacks, GET/POST floods, attacks that target Apache, Windows or OpenBSD vulnerabilities. Its goal is to crash the web server, making it unable to serve legitimate web requests.
+\end{enumerate}
 
+
+\subsection{NIDS techniques}
+Regardless of the motives and the techniques used by attackers, the consequences of DDoS attacks can be grave for different organizations and therefore, a strong detection mechanism to detect both the current attacks and future attacks is required to alleviate this risk and help these organizations to respond quickly in a timely manner. 
+
+NIDS can be sub-divided into "Signature-based intrusion detection" (SIDS) or "Anomaly detection-based intrusion detection" (AIDS). For SIDS, the prediction of whether some data is anomalous or not is based on pre-defined signature. Therefore, if the attack signature matches what have been defined, the success rate at detecting the anomalies is high. However, if the attack is unknown and its signature has not been stored, there is a high probability that we will have a high false negative rate. As such, the NIDS will not be resilient against novel attacks. On the other hand, AIDS tries to define what normal data will look like and tries to draw the boundaries between normal data and abnormal ones. The benefit of using this method is that it can detect new form of attacks, as long as they are deviant from normal ones. However, it is difficult to define the right boundaries between normal and abnormal data.
+
+Also, it is important to note that the performance of NIDS relies heavily on the data that we feed into them, especially so for the SIDS. This is because if only a few signatures are captured, it will be difficult for NIDS to recognize unknown attacks because it does not have information about those attacks. As such, data sharing might help to overcome this problem by allowing one entities to be able to obtain information that will otherwise be unavailable to them.
+
+
+\subsection{Application of data sharing}\todo{Stanley: read paper related to data sharing and its use}
+
+\subsection{Machine Learning techniques}\todo{Van fill this up because this is about the ML algorithms used in this study} 
+Recently, machine learning (ML) and deep learning (DL) offer potential solutions to detect network anomalies in an efficient manner. Both of these techniques come under the umbrella term of Artificial Intelligence (AI) that makes use of the available data to derive the normal behaviors (and in some cases, the anomalous behaviors) of the network data and therefore, are able to detect anomalous behaviors for future data. 
+
+
+\end{background}
