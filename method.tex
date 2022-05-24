@@ -1,2 +1,19 @@
 \section{Methodology}
 \label{sec:method}
+\begin{method}
+In this section, we will describe how we curate the data-sets. We will also detail our ML pipeline to detect anomalies.
+\subsection{Data Pipeline}
+\myparab{CIC-DS 2017 \& 2018.} The data is the processed data that resulted from the network traffic analysis of the raw pcap files using CICFlowMeter. CICFlowMeter takes the raw packet data in pcap files  and separates them into flows (A flow is a sequence of packets carrying information from a source computer to a destination, which can be another host, a multicast group or a broadcast domains. After that, it will analyse these flows and return the characteristics(features) of these flows. In total, CICFlowmeter return the data that has 80 features.
+
+After that, we need to label these flows(whether they are benign or malicous and if they are malicious, we label the attack types) based on attacker IP, victim IP and timing of the flow. If the flow match with the first 2 features and the timing of the flow overlaps with any of the attack types, we will label that flow to be that attack type. 
+
+\myparab{IoT data.}The data given to us are the raw pcap files. As such, we need to use a network traffic analysis tool to extract features of these files. In this case, we choose to use NFStream, a popular network flow aggregation and statistical features extraction tool, widely used in network traffic analysis. After that, we compare these flows against log files provided by IoT dataset and label these flows based on source IP, source port, destination IP, destination port and timing of the flows. If the flow match with the first 4 features and the timing of the flow overlap with when the attack occurs, the flow will be labeled according to that attack.
+
+\subsection{ML Pipeline}
+\myparab{Feature Selection.}\todo{Fill this up}\\
+\myparab{Creating training and testing subsets}\todo{Fill this up}\\
+\myparab{Models}\todo{Fill this up}\\
+\myparab{Metrics}\todo{Fill this up}\\
+
+
+\end{method}
