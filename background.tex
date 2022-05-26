@@ -20,8 +20,12 @@ NIDS can be sub-divided into "Signature-based intrusion detection" (SIDS) or "An
 Also, it is important to note that the performance of NIDS relies heavily on the data that we feed into them, especially so for the SIDS. This is because if only a few signatures are captured, it will be difficult for NIDS to recognize unknown attacks because it does not have information about those attacks. As such, data sharing might help to overcome this problem by allowing one entities to be able to obtain information that will otherwise be unavailable to them.
 
 
-\subsection{Application of data sharing}\todo{Stanley: read paper related to data sharing and its use, I already include 2 related papers in the folder I shared with the group}
+\subsection{Application of data sharing}
+In Peng et al \textit{Information Sharing for Distributed Intrusion Detection Systems}, the authors used distributed data sharing to tackle DDos attacks. DDos attacks are hard to recognize since the traffic to individual “zombie” devices is insignificant and unlikely to raise alarms. The author overcomes this problem by recognizing that aggregating network traffic in a network topology that interacts with the victim will show evidence of a DDos attack, in particular monitoring the number of RST packets sent by the victim. The detection systems, each monitoring a subnetwork, will share data with each other once it detects abnormal traffic. As such, data sharing can be used to flag DDos attacks that are otherwise hard to defend against.
 
+Another application of data sharing is showcased in Lo et al \textit{A Cooperative Intrusion Detection System Framework for Cloud Computing Networks}. The authors propose a cooperative framework, in which IDS will alert IDS in different cloud computing regions of severe attacks. A new blocking rule, or signature, is generated and written into the blocking table of the whole IDS cluster, preventing same attacks in the future.
+
+It is worth noting that these two papers discuss data sharing in a private regime, i.e. the distributed system is assumed to be within a single enterprise. In this paper, we aim to extend data sharing schemes to public schemes. In this regime, one should further consider data privacy implications.
 
 
 \subsection{Machine Learning techniques}
