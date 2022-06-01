@@ -1,55 +1,47 @@
 \section{Background}
 \label{sec:background}
 \begin{background}
-Here, we first review DDoS attacks, followed by different NIDS techniques that are currently used to detect DDoS. We will then talk about the idea of data sharing and its use in other domains. Finally we will talk about the Machine Learning techniques that we will use as the NIDS technique in this study.
+Here, we first review DDoS attacks, followed by different NIDS techniques that are currently used to detect DDoS. We will then talk about the idea of data sharing and its use in other domains. Finally, we will talk about the machine learning techniques that we will use for NIDS in this study.
 \subsection{DDoS attacks}
-DDoS attacks are carried out with different incentives. They can be for financial\/economic gains, revenge, ideological belief, intellectual Challenge or cyberwarfare. Amongst these incentives, attacks for financial/economic gain are usually the most technical carried out by the most experienced attackers and therefore, are the most dangerous and hard to stop.\\
-Techniques wise, DDoS can be categorized into three types:
+DDoS attacks are carried out with different incentives: financial\/economic gain, revenge, ideology, intellectual challenge or cyberwarfare. Among these incentives, attacks for financial/economic gain are usually the most technical carried out by the most experienced attackers, and therefore are the most dangerous and hard to stop.\\
+DDoS techniques can be categorized into three types:
 \begin{enumerate}
     \item Volume Based Attacks. This includes UDP floods, ICMP floods and other spoofed packet floods. The attacker's goal is to exhaust the bandwidth of the attacked site.
-    \item Protocol Attacks. Include SYN floods, fragmented packet attacks, Ping of Death, Smurf DDoS and more. This type of attack exploit the protocol that the server and client use to communicate with the clients to consume the resources of the servers, or those of intermediate communication equipment, such as firewalls, load balancers and so on.
+    \item Protocol Attacks. Include SYN floods, fragmented packet attacks, Ping of Death, Smurf DDoS and more. This type of attack exploits the protocol that the server uses to communicate with clients to consume the resources of the servers, or those of intermediate communication equipment, such as firewalls and load balancers.
     \item Application Layer Attacks. This includes low and slow attacks, GET/POST floods, attacks that target Apache, Windows or OpenBSD vulnerabilities. Its goal is to crash the web server, making it unable to serve legitimate web requests.
 \end{enumerate}
 
-
 \subsection{NIDS techniques}
-Regardless of the motives and the techniques used by attackers, the consequences of DDoS attacks can be grave for different organizations and therefore, a strong detection mechanism to detect both the current attacks and future attacks is required to alleviate this risk and help these organizations to respond quickly in a timely manner. 
+Regardless of the motives and the techniques used by attackers, the consequences of DDoS attacks can be grave for different organizations, and therefore a strong detection mechanism to detect both the current attacks and future attacks is required to alleviate this risk and help these organizations to respond quickly in a timely manner. 
 
-NIDS can be sub-divided into "Signature-based intrusion detection" (SIDS) or "Anomaly detection-based intrusion detection" (AIDS). For SIDS, the prediction of whether some data is anomalous or not is based on pre-defined signature. Therefore, if the attack signature matches what have been defined, the success rate at detecting the anomalies is high. However, if the attack is unknown and its signature has not been stored, there is a high probability that we will have a high false negative rate. As such, the NIDS will not be resilient against novel attacks. On the other hand, AIDS tries to define what normal data will look like and tries to draw the boundaries between normal data and abnormal ones. The benefit of using this method is that it can detect new form of attacks, as long as they are deviant from normal ones. However, it is difficult to define the right boundaries between normal and abnormal data.
+NIDS can be sub-divided into ``\textit{signature-based} intrusion detection'' (SIDS) or ``\textit{anomaly detection-based} intrusion detection'' (AIDS). For SIDS, whether some data is anomalous or not is predicted based on pre-defined signatures. Therefore, if the attack signature matches one that has previously been defined, the success rate at detecting the anomalies is high. However, if the attack is unknown and its signature has not been stored, we will with high probability have a high false negative rate. As such, the NIDS will not be resilient against novel attacks. On the other hand, AIDS tries to define what normal data will look like and tries to draw the boundaries between normal data and abnormal ones. The benefit of using this method is that it can detect new form of attacks, as long as they are deviant from normal ones. However, it is difficult to define the right boundaries between normal and abnormal data.
 
-Also, it is important to note that the performance of NIDS relies heavily on the data that we feed into them, especially so for the SIDS. This is because if only a few signatures are captured, it will be difficult for NIDS to recognize unknown attacks because it does not have information about those attacks. As such, data sharing might help to overcome this problem by allowing one entities to be able to obtain information that will otherwise be unavailable to them.
-
+Also, it is important to note that the performance of NIDS relies heavily on the data that we feed into them, especially so for the SIDS. This is because if only a few signatures are captured, it will be difficult for NIDS to recognize unknown attacks because it lacks information about them. As such, data sharing might help to overcome this problem by allowing an unexposed entity to be able to obtain information that will otherwise be unavailable to them.
 
 \subsection{Application of data sharing}
-In Peng et al \textit{Information Sharing for Distributed Intrusion Detection Systems}, the authors used distributed data sharing to tackle DDos attacks. DDos attacks are hard to recognize since the traffic to individual “zombie” devices is insignificant and unlikely to raise alarms. The author overcomes this problem by recognizing that aggregating network traffic in a network topology that interacts with the victim will show evidence of a DDos attack, in particular monitoring the number of RST packets sent by the victim. The detection systems, each monitoring a subnetwork, will share data with each other once it detects abnormal traffic. As such, data sharing can be used to flag DDos attacks that are otherwise hard to defend against.
+Distributed data sharing has been used in the past to tackle DDoS attacks (Peng et al \textit{Information Sharing for Distributed Intrusion Detection Systems}). DDoS attacks are hard to recognize since the traffic to individual ``zombie'' devices is insignificant and unlikely to raise alarms. Peng et al overcome this problem by recognizing that aggregating network traffic in a network topology that interacts with the victim will show evidence of a DDoS attack, in particular monitoring the number of RST packets sent by the victim. The detection systems, each monitoring a subnetwork, will share data with each other once they detect abnormal traffic. This shows that data sharing can be used to flag DDoS attacks that are otherwise hard to defend against.
 
-Another application of data sharing is showcased in Lo et al \textit{A Cooperative Intrusion Detection System Framework for Cloud Computing Networks}. The authors propose a cooperative framework, in which IDS will alert IDS in different cloud computing regions of severe attacks. A new blocking rule, or signature, is generated and written into the blocking table of the whole IDS cluster, preventing same attacks in the future.
+Lo et al propose a cooperative framework in which each IDS will alert other IDS in different cloud computing regions of severe attacks (\textit{A Cooperative Intrusion Detection System Framework for Cloud Computing Networks}). A new blocking rule, or signature, is generated and written into the blocking table of the whole IDS cluster, immunizing the system against similar future attacks.
 
-It is worth noting that these two papers discuss data sharing in a private regime, i.e. the distributed system is assumed to be within a single enterprise. In this paper, we aim to extend data sharing schemes to public schemes. In this regime, one should further consider data privacy implications.
-
+It is worth noting that these two papers discuss data sharing in a private regime, i.e. the distributed system is assumed to be within a single enterprise. In this paper, we aim to extend data sharing schemes to public schemes. Thus, data privacy implications are significantly more important to consider.
 
 \subsection{Machine Learning techniques}
-Machine learning (ML) offers a potential solution to detect network anomalies in an efficient manner. Machine Learning comes under the umbrella term of Artificial Intelligence (AI). It makes use of the available data to "learn" the normal behaviors (and in some cases, the anomalous behaviors) of the network data and therefore, are able to detect anomalous behaviors for future data. 
-Machine Learning are categorized into 2 categories, supervised ML and unsupervised ML. The crucial difference between these 2 is that supervised ML requires labeled data and in general, can only detect patterns of attacks contained within the data labeled. ON the other hand, unsupervised ML seek to create a model of "normal behavior" and detect deviations from it.
+Machine learning (ML) offers a potential solution to detect network anomalies in an efficient manner. By making use of the available data to ``learn'' the normal behaviors (and in some cases, the anomalous behaviors) of the network data, we can detect anomalous behaviors for future data. 
+Machine learning models are divided into 2 categories, supervised ML and unsupervised ML. The crucial difference is that supervised ML requires labeled data and in general, can only detect patterns of attacks contained within the data labeled. On the other hand, unsupervised ML seek to create a model of "normal behavior" and detect deviations from it.
 
-In this study, we focus on using unsupervised Machine Learning because our goal is to access the potential of data sharing on unseen attacks. Detecting unknown attacks might be the area where data sharing will be the most useful, compared to detecting known attacks which the supervised ML models are already doing well on. We decide to explore 2 classifiers, Principle Component Analysis(PCA) and Kernel Density Estimation (KDE). 
+In this study, we focus on using unsupervised ML because our goal is to access the potential of data sharing on unseen attacks. Detecting unknown attacks might be the area where data sharing will be the most useful, compared to detecting known attacks which the supervised ML models are already doing well on. We decide to explore 2 classifiers, Principle Component Analysis (PCA) and Kernel Density Estimation (KDE). 
 
-PCA is one of the most popular forms of anomaly detection. It is basically a dimensional-reduction method, The gist of this method is that if reduced to lower dimension, anomalous points will result in higher loss than normal data points.
+PCA is one of the most popular forms of anomaly detection. PCA is an ML method based around dimension reduction, using the principle that when reduced to lower dimension, anomalous points will result in higher loss than normal data points.
 
 KDE is an unsupervised learning technique that tries to estimate the probability density function (PDF) of a random variable in a non-parametric way. It will estimate what is the probability that this data is seen. The anomalies are those that should be seen rarely.
 
-
-
-
-
-
-
 \subsection{Data source}
-Also, since it is challenging to be able to obtain actual attacks due to security reasons, we have to resort to using 2 sets of synthetically generated data-sets, CIC-IDS and Aposemat IoT-23. The purpose of using 2 different sets is because we would like to see how well data sharing works for different kinds of data and networks.  
+
+Also, since it is challenging to be able to obtain actual attacks due to security reasons, we have to resort to using 2 sets of synthetically generated datasets, CIC-IDS and Aposemat IoT-23. The purpose of using 2 different sets is that we would like to see how well data sharing works for different kinds of data and networks.  
 
 \myparab{CIC-IDS 2017 \& 2018.}These data-sets are generated by Canadian Institute for Cybersecurity with the objective of developing a systematic approach to generate diverse and comprehensive benchmark data-sets for intrusion detection based on the creation of user profiles. These profiles contain the abstract representations of events and behaviors seen on the network. Specifically, these data-sets build 2 distinct classes of profiles. 
 
-B-profiles:Encapsulate the entity behaviors of users using machine learning and statistical analysis  techniques. After that, data will be simulated based on these statistics.
+B-profiles: Encapsulate the entity behaviors of users using machine learning and statistical analysis  techniques. After that, data will be simulated based on these statistics.
 
 M-profiles: Try to describe an attack scenario in an unambiguous manner. Next, either human or some autonomous agents would be employed to interpret and execute these scenarios. The final datasets include seven different attack scenarios: Brute-force, Heartbleed, Botnet, DoS, DDoS, Web attacks and infiltration of the network from inside. 
 
