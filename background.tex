@@ -6,15 +6,15 @@ Here, we first review DDoS attacks, followed by different NIDS techniques that a
 DDoS attacks are carried out with different incentives: financial\/economic gain, revenge, ideology, intellectual challenge or cyberwarfare. Among these incentives, attacks for financial/economic gain are usually the most technical carried out by the most experienced attackers, and therefore are the most dangerous and hard to stop.\\
 DDoS techniques can be categorized into three types:
 \begin{enumerate}
-    \item Volume Based Attacks. This includes UDP floods, ICMP floods and other spoofed packet floods. The attacker's goal is to exhaust the bandwidth of the attacked site.
-    \item Protocol Attacks. Include SYN floods, fragmented packet attacks, Ping of Death, Smurf DDoS and more. This type of attack exploits the protocol that the server uses to communicate with clients to consume the resources of the servers, or those of intermediate communication equipment, such as firewalls and load balancers.
-    \item Application Layer Attacks. This includes low and slow attacks, GET/POST floods, attacks that target Apache, Windows or OpenBSD vulnerabilities. Its goal is to crash the web server, making it unable to serve legitimate web requests.
+    \item \textbf{Volume Based Attacks.} This includes UDP floods, ICMP floods and other spoofed packet floods. The attacker's goal is to exhaust the bandwidth of the attacked site.
+    \item \textbf{Protocol Attacks.} Include SYN floods, fragmented packet attacks, Ping of Death, Smurf DDoS and more. This type of attack exploits the protocol that the server uses to communicate with clients to consume the resources of the servers, or those of intermediate communication equipment, such as firewalls and load balancers.
+    \item \textbf{Application Layer Attacks.} This includes low and slow attacks, GET/POST floods, attacks that target Apache, Windows or OpenBSD vulnerabilities. Its goal is to crash the web server, making it unable to serve legitimate web requests.
 \end{enumerate}
 
 \subsection{NIDS techniques}
-Regardless of the motives and the techniques used by attackers, the consequences of DDoS attacks can be grave for different organizations, and therefore a strong detection mechanism to detect both the current attacks and future attacks is required to alleviate this risk and help these organizations to respond quickly in a timely manner. 
+Regardless of the motives and the techniques used by attackers, the consequences of DDoS attacks can be grave for different organizations, and therefore a strong detection mechanism to pinpoint both the current attacks and future attacks is required to alleviate this risk and help these organizations to respond quickly in a timely manner. 
 
-NIDS can be sub-divided into ``\textit{signature-based} intrusion detection'' (SIDS) or ``\textit{anomaly detection-based} intrusion detection'' (AIDS). For SIDS, whether some data is anomalous or not is predicted based on pre-defined signatures. Therefore, if the attack signature matches one that has previously been defined, the success rate at detecting the anomalies is high. However, if the attack is unknown and its signature has not been stored, we will with high probability have a high false negative rate. As such, the NIDS will not be resilient against novel attacks. On the other hand, AIDS tries to define what normal data will look like and tries to draw the boundaries between normal data and abnormal ones. The benefit of using this method is that it can detect new form of attacks, as long as they are deviant from normal ones. However, it is difficult to define the right boundaries between normal and abnormal data.
+NIDS can be sub-divided into ``\textit{signature-based} intrusion detection'' (SIDS) or ``\textit{anomaly detection-based} intrusion detection'' (AIDS). For SIDS, whether some data is anomalous or not is predicted based on pre-defined signatures. Therefore, if the attack signature matches one that has previously been defined, the success rate at detecting the anomalies is high. However, if the attack is unknown and its signature has not been stored, we will with high probability have a high false negative rate. As such, the SIDS will not be resilient against novel attacks. On the other hand, AIDS tries to define what normal data will look like and tries to draw the boundaries between normal data and abnormal ones. The benefit of using this method is that it can detect new form of attacks, as long as they are deviant from normal ones. However, it is difficult to define the right boundaries between normal and abnormal data.
 
 Also, it is important to note that the performance of NIDS relies heavily on the data that we feed into them, especially so for the SIDS. This is because if only a few signatures are captured, it will be difficult for NIDS to recognize unknown attacks because it lacks information about them. As such, data sharing might help to overcome this problem by allowing an unexposed entity to be able to obtain information that will otherwise be unavailable to them.
 
@@ -39,13 +39,13 @@ KDE is an unsupervised learning technique that tries to estimate the probability
 
 Also, since it is challenging to be able to obtain actual attacks due to security reasons, we have to resort to using 2 sets of synthetically generated datasets, CIC-IDS and Aposemat IoT-23. The purpose of using 2 different sets is that we would like to see how well data sharing works for different kinds of data and networks.  
 
-\myparab{CIC-IDS 2017 \& 2018.}These data-sets are generated by Canadian Institute for Cybersecurity with the objective of developing a systematic approach to generate diverse and comprehensive benchmark data-sets for intrusion detection based on the creation of user profiles. These profiles contain the abstract representations of events and behaviors seen on the network. Specifically, these data-sets build 2 distinct classes of profiles. 
+\myparab{CIC-IDS 2017 \& 2018.}These data-sets are generated by Canadian Institute for Cybersecurity with the objective of developing a systematic approach to generate diverse and comprehensive benchmark data-sets for intrusion detection based on the creation of user profiles. These profiles contain the abstract representations of events and behaviors seen on the network. Specifically, these data-sets build 2 distinct classes of profiles:
 
-B-profiles: Encapsulate the entity behaviors of users using machine learning and statistical analysis  techniques. After that, data will be simulated based on these statistics.
+\textit{B-profiles,} which encapsulate the entity behaviors of users using machine learning and statistical analysis  techniques. After that, data will be simulated based on these statistics.
 
-M-profiles: Try to describe an attack scenario in an unambiguous manner. Next, either human or some autonomous agents would be employed to interpret and execute these scenarios. The final datasets include seven different attack scenarios: Brute-force, Heartbleed, Botnet, DoS, DDoS, Web attacks and infiltration of the network from inside. 
+\textit{M-profiles,} which try to describe an attack scenario in an unambiguous manner. Next, either human or some autonomous agents would be employed to interpret and execute these scenarios. 
 
-The attacking infrastructure consists of 50 machines. The victim organization has 5 departments and includes 420 machines and 30 servers. More information about the description of the attack can be found in Appendix 1.
+The final datasets include seven different attack scenarios: Brute-force, Heartbleed, Botnet, DoS, DDoS, Web attacks and infiltration of the network from inside. The attacking infrastructure consists of 50 machines. The victim organization has 5 departments and includes 420 machines and 30 servers. More information about the description of the attack can be found in Appendix 1.
 
 We use CIC-IDS 2017 as one dataset and CIC-IDS-2018 as another dataset and we try to share the data between these two data sets to see whether data sharing can help NIDS for each dataset.
 
@@ -82,6 +82,6 @@ For the IoT data:
 
 
 
-\end{background}
+
 
 \end{background}
