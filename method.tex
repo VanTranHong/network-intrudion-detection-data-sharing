@@ -10,10 +10,44 @@ After that, we need to label these flows(whether they are benign or malicous and
 \myparab{IoT data.}The data given to us are the raw pcap files. As such, we need to use a network traffic analysis tool to extract features of these files. In this case, we choose to use NFStream, a popular network flow aggregation and statistical features extraction tool, widely used in network traffic analysis. After that, we compare these flows against log files provided by IoT dataset and label these flows based on source IP, source port, destination IP, destination port and timing of the flows. If the flow match with the first 4 features and the timing of the flow overlap with when the attack occurs, the flow will be labeled according to that attack.
 
 \subsection{ML Pipeline}
-\myparab{Feature Selection.}\todo{Fill this up}\\
-\myparab{Creating training and testing subsets}\todo{Fill this up}\\
-\myparab{Models}\todo{Fill this up}\\
-\myparab{Metrics}\todo{Fill this up}\\
+\myparab{Feature Selection.} In order to train a good model, we first exclude some features we deem inappropriate and select important network features to be used in our machine learning model. We remove features which might affect the performance of our model or are too complicated to include in such as IP address and port number. This is because IP address of benign and of attackers can vary significantly. As such, including them might not be very useful. On the other hand, should these features be included, they should be treated as discreet values. Given that there are many different IP and port number, the number of features might explode. As such, we decide to use these following 9 features to characterize the networks.
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+        Feature name & Type \\ \hline
+        bidirectional\_duration\_ms & continuous \\ \hline
+        biddirectional\_packets & continuous \\ \hline
+        bidirectional\_bytes & continuous \\ \hline
+        src2dst\_duration\_ms & continuous \\ \hline
+        src2dst\_packets & continuous \\ \hline
+        src2dst\_bytes & continuous \\ \hline
+        dst2src\_duration\_ms & continuous \\ \hline
+        dst2src\_packets & continuous \\ \hline
+        dst2src\_bytes & continuous \\ \hline
+    \end{tabular}
+\end{table}
+
+
+
+
+
+\myparab{Creating training and testing subsets}
+Since we are focusing on unsupervised learning (as we want to see how well data sharing can help in detecting unknown attacks), the training data we used are benign data. We conduct several tests to answer the questions we have posted earlier. \\
+\textbf{Does data sharing has the potential to improve the performance of NIDS?} 
+In order to answer this question, we try to see if using another dataset's trainset or augmenting another dataset's trainset can help to build a better NIDS. We build models using 3 train scenarios. The first one is trained using only the benign data of 2017. The second one is trained using only the benign data of 2018. The third one is trained using augmented data from both full 2017 train dataset and full 2018 train datasets. We then test these models against the 2017 test set and 2018 test sets.
+\textbf{Does the amount of data shared matter?} 
+In order to to this, for each of the train scenarios that we mention earlier, we try to randomly sample the train datasets from just 10 percent to the whole train datasets to see if the performance of the NIDS is impacted by the amount of data used for training. We also conduct another scenario where instead of augmenting train datasets according their original size, we sample them to make the trainsize of each dataset equal. We use these model to test similarly to the previous questions.
+
+\textbf{What data should be shared?} In order to do this, we use IoT dataset instead because it has more datasets. Our initial dataset used for training is 1-1. After that, we will try to augment different datasets (20-1, 21-1, 34-1) with the dataset 1-1 to see if augmenting data improves performance of NIDS under these scenarios.
+
+\myparab{Models} We choose to focus on unsupervised machine learning model in this study because we want to see if augmenting data can help to improve detection of anomalies that possibly, neither one of them has seen before. We initially try Principal Component Analysis (PCA), Gaussian Mixture Model (GMM) and Kernel Density Estimation (KDE) and realize that only KDE works well. As such, we will only focus on KDE classifier in this study.
+For the KDE model, we also change hyperparameters to obtain the best performaning classifier. 
+
+
+
+\myparab{Metrics} We choose AUC as metrics to measure the performance of our NIDS because AUC is a robust metric for classifying problem that takes into account both false positive and true positive rates.
 
 
 \end{method}
