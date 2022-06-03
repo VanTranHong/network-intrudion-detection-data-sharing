@@ -9,12 +9,12 @@ In this section, we will discuss avenues for further research.
     
 \subsection{Alternative distance functions}
     
-    \todo{write this}
+    It is possible that AUC is not the best metric for determining what data is different enough to be useful, and that more effective diversity may be achieved using a different metric to evaluate how different the two distributions are. Thus, further research is needded to determine how the effectiveness of the model changes under different distance functions, such as mutual information, which may be closer to the ``orthogonality'' a machine learning model wants.
     
 \subsection{Changes in the data to share}
 
-    \todo{write this}
+    Our research thus far has focused entirely on the sharing of \textit{control} data, giving our models a more concrete picture of what normal behavior looks like in order to better spot \textit{unusual} (and thus likely to be malignant) behavior. However, it intuitively stands to reason that a model that knows some of the types of attacks it's looking for would be better at detecting those types of attack, so further research is needed to elucidate whether this is actually true -- whether sharing \textit{attack} data as well as control data may increase the effectiveness of the model.
     
 \subsection{Capturing variation in the type of NIDS model}
 
-    \todo{write this}
+    Our work has focused on training and refining an anomaly-based IDS model. However, the needs of a \textit{signature}-based model are different, since it needs to learn to classify specific types of attacks rather than determine where the boundary of normal and anomalous traffic lies, and it stands to reason that different techniques may be useful in training them, so further research is needed to determine how best to go about this. In addition, with high enough effectiveness it may be possible to use an anomaly-based model to help identify new signatures on which to train a signature-based model, so further research may be useful to determine the feasibility of such a technique.
