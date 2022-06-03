@@ -32,20 +32,21 @@ Next, we need to label these flows as benign or malicous (if they are malicious,
 
 
 \myparab{Creating training and testing subsets.}
-Since we are focusing on unsupervised learning (as we want to see how well data sharing can help in detecting unknown attacks), the training data we used are benign data. We conduct several tests to answer the questions we have posted earlier. \\
+Since we are focusing on unsupervised learning (as we want to see how well data sharing can help in detecting unknown attacks), we used benign data as training data. We conducted several tests to answer the previously defined questions.
+
 \textbf{Does data sharing has the potential to improve the performance of NIDS?} 
-In order to answer this question, we try to see if using another dataset's trainset or augmenting another dataset's trainset can help to build a better NIDS. We build models using 3 train scenarios. The first one is trained using only the benign data of 2017. The second one is trained using only the benign data of 2018. The third one is trained using augmented data from both full 2017 train dataset and full 2018 train datasets. We then test these models against the 2017 test set and 2018 test sets.
+To answer this question, we tried using or augmenting another dataset's trainset helps to build a better NIDS. We built models using 3 training scenarios. The first one is trained using only the benign data of 2017. The second one is trained using only the benign data of 2018. The third one is trained using augmented data from both full 2017 train dataset and full 2018 train datasets. We then tested these models against the 2017 test dataset and 2018 test datasets.
+
 \textbf{Does the amount of data shared matter?} 
-In order to to this, for each of the train scenarios that we mention earlier, we try to randomly sample the train datasets from just 10 percent to the whole train datasets to see if the performance of the NIDS is impacted by the amount of data used for training. We also conduct another scenario where instead of augmenting train datasets according their original size, we sample them to make the trainsize of each dataset equal. We use these model to test similarly to the previous questions.
+In order to evaluate this, we randomly sampled 10 percent of the whole training dataset, used this to train the model, and evaluated the performance of the NIDS to see whether it was impacted by the amount of training data. We also conducted another scenario where, instead of augmenting training datasets according their original size, we sampled them to make the size of each dataset equal. %We used these model to test similarly to the previous questions.
 
-\textbf{What data should be shared?} In order to do this, we use IoT dataset instead because it has more datasets. Our initial dataset used for training is 1-1. After that, we will try to augment different datasets (20-1, 21-1, 34-1) with the dataset 1-1 to see if augmenting data improves performance of NIDS under these scenarios.
+\textbf{What data should be shared?} 
+In order to answer this, we used the IoT dataset instead, as it provided more data. Our initial dataset used for training is 1-1. After that, we will augmented different datasets (20-1, 21-1, 34-1) with the dataset 1-1 to see if augmenting data improves performance of NIDS under these scenarios.
 
-\myparab{Models} We choose to focus on unsupervised machine learning model in this study because we want to see if augmenting data can help to improve detection of anomalies that possibly, neither one of them has seen before. We initially try Principal Component Analysis (PCA), Gaussian Mixture Model (GMM) and Kernel Density Estimation (KDE) and realize that only KDE works well. As such, we will only focus on KDE classifier in this study.
-For the KDE model, we also change hyperparameters to obtain the best performaning classifier. 
+\myparab{Models} 
+We chose to focus on unsupervised machine learning model in this study because we are interested in seeing if augmenting data can help to improve detection of anomalies that could previously go undetected. We initially tried Principal Component Analysis (PCA), Gaussian Mixture Model (GMM) and Kernel Density Estimation (KDE), but ultimately came to the conclusion that only KDE works well. As such, we will only focus on KDE classifier in this study and changed the hyperparameters of this model to obtain the best performing classifier. 
 
-
-
-\myparab{Metrics} We choose AUC as metrics to measure the performance of our NIDS because AUC is a robust metric for classifying problem that takes into account both false positive and true positive rates.
-
+\myparab{Metrics} 
+We choose AUC as the metric to measure the performance of our NIDS because it is a robust metric that takes into account both false positive and true positive rates.
 
 \end{method}
